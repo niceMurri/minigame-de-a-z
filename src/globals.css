@@ -1,0 +1,15 @@
+:root {
+    --primary-dark-color: #1A181B;
+    --primary-medium-color: #7C7C7C;
+    --primary-contrast-color: #FFFEFF;
+    --primary-green-color: #7DDF64;
+    --primary-purple-color: #6320EE;
+}
+
+* {
+    font-family: Inter, Roboto, sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: var(--primary-contrast-color);
+}

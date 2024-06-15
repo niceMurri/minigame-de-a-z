@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import './globals.css';
-import { Fragment, useCallback, useState } from 'react';
+import { useState } from 'react';
 import { randomLetters } from './letters';
 import Progress from './components/Progress';
 
@@ -11,6 +11,7 @@ const Box = styled.div`
   max-width: 570px;
   border-radius: 6px;
   padding: 16px;
+  min-height: 109px;
 `;
 
 const Wrapper = styled.main`
@@ -85,7 +86,7 @@ const LetterListItem = styled.li`
   }
 `;
 
-
+let handleKeyUp = (e: KeyboardEvent) => { };
 
 function App() {
   const [gameIsRunning, setGameIsRunning] = useState(false);
@@ -98,7 +99,7 @@ function App() {
     const randLetters = randomLetters();
     setLetters(randLetters);
 
-    document.addEventListener('keyup', function handle(e) {
+    document.addEventListener('keyup', handleKeyUp = function (e) {
       const letterIndex = document.querySelectorAll('.letterActive').length;
       const currentLetter = randLetters[letterIndex];
 
@@ -107,14 +108,14 @@ function App() {
         letterBox?.classList.add('letterActive');
 
       } else {
-        document.removeEventListener('keyup', handle);
+        document.removeEventListener('keyup', handleKeyUp);
         loseGame();
         return;
       }
 
       if ((letterIndex + 1) == randLetters.length) {
         winGame();
-        document.removeEventListener('keyup', handle);
+        document.removeEventListener('keyup', handleKeyUp);
         return;
       }
     });
@@ -151,6 +152,8 @@ function App() {
     for (let index = 0; index <= intervalId; index++) {
       clearInterval(index);
     }
+
+    document.removeEventListener('keyup', handleKeyUp);
   }
 
   const winGame = () => {
@@ -171,7 +174,7 @@ function App() {
       <Box>
         <LetterList>
           {(letters && gameIsRunning) ? (
-            <Box style={{ gap: '8px' }}>
+            <div style={{ gap: '8px' }}>
               <ListWrapper >
                 {letters.map((item, index) => (
                   <LetterListItem key={`${item}-${index}`} id={`${item}-${index}`}>{item}</LetterListItem>
@@ -179,7 +182,7 @@ function App() {
               </ListWrapper>
 
               <Progress percent={percent} />
-            </Box>
+            </div>
 
           ) : (
             <>

@@ -114,7 +114,9 @@ function App() {
       }
 
       if ((letterIndex + 1) == randLetters.length) {
-        winGame();
+        setTimeout(() => {
+          winGame();
+        }, 150);
         document.removeEventListener('keyup', handleKeyUp);
         return;
       }

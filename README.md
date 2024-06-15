@@ -2,4 +2,4 @@
 
 Para rodar o projeto é necessário
 - Instalar depedências
-- Executar o servido com o comando "yarn dev"
+- Executar o servidor com o comando "yarn dev"

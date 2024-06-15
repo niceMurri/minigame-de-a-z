@@ -24,8 +24,6 @@ const Progress = ({ percent }: ProgressProps) => {
         border-radius: 7px;
         height: 7px;
         width: ${percent}%;
-        transition: ease 0.3s;
-
     `;
 
     return (
